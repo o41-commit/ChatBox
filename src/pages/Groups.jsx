@@ -101,21 +101,21 @@ const Groups = () => {
   );
 
   return (
-    <div className="font-poppins min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6">
+    <div className="font-poppins min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 sm:p-6">
       <div className="max-w-4xl mx-auto">
         {/* HEADER */}
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
-            <h1 className="text-4xl font-bold text-gray-800 mb-2">
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
               Groups & Communities
             </h1>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base">
               Join and explore communities to connect with like-minded people
             </p>
           </div>
           <button
             onClick={() => navigate("/dashboard/create-group")}
-            className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-lg"
+            className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition shadow-lg w-full md:w-auto self-start md:self-auto"
           >
             <FaPlus /> Create Group
           </button>
@@ -123,16 +123,16 @@ const Groups = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl">
+          <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm sm:text-base">
             {error}
           </div>
         )}
 
         {/* Loading State */}
         {loading && (
-          <div className="flex items-center justify-center py-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center py-16 gap-3">
             <FaSpinner className="text-4xl text-blue-600 animate-spin" />
-            <p className="ml-4 text-gray-600">Loading groups...</p>
+            <p className="text-gray-600 text-sm sm:text-base">Loading groups...</p>
           </div>
         )}
 
@@ -140,14 +140,14 @@ const Groups = () => {
           <>
             {/* MY GROUPS */}
             <div className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
                 My Groups
               </h2>
 
               {myGroups.length === 0 ? (
-                <div className="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-gray-200">
+                <div className="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-gray-200 p-4">
                   <FaUsers className="text-5xl text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 text-sm sm:text-base">
                     No groups yet. Create or join one!
                   </p>
                 </div>
@@ -157,15 +157,15 @@ const Groups = () => {
                     {myGroups.slice(0, myLimit).map((group) => (
                       <div
                         key={group._id}
-                        className="bg-white flex items-center justify-between p-5 rounded-2xl shadow-sm hover:shadow-lg transition border-l-4 border-blue-600"
+                        className="bg-white flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-lg transition border-l-4 border-blue-600 gap-4"
                       >
                         <div
-                          className="flex items-center gap-4 flex-1 cursor-pointer"
+                          className="flex items-center gap-3 sm:gap-4 flex-1 cursor-pointer min-w-0"
                           onClick={() =>
                             navigate(`/dashboard/group/${group._id}`)
                           }
                         >
-                          <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
                             {group.groupPics ? (
                               <img
                                 src={group.groupPics}
@@ -173,18 +173,18 @@ const Groups = () => {
                                 className="w-full h-full rounded-full object-cover"
                               />
                             ) : (
-                              <FaUsers className="text-white text-xl" />
+                              <FaUsers className="text-white text-lg sm:text-xl" />
                             )}
                           </div>
 
                           <div className="min-w-0 flex-1">
-                            <h3 className="font-bold text-gray-800 text-lg">
+                            <h3 className="font-bold text-gray-800 text-base sm:text-lg truncate">
                               {group.name}
                             </h3>
-                            <p className="text-sm text-gray-600 line-clamp-1">
+                            <p className="text-xs sm:text-sm text-gray-600 line-clamp-1">
                               {group.description || "No description"}
                             </p>
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5">
                               {group.users?.length || 0} members •{" "}
                               {group.type || "Private"}
                             </p>
@@ -195,7 +195,7 @@ const Groups = () => {
                           onClick={() =>
                             navigate(`/dashboard/group/${group._id}`)
                           }
-                          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition flex-shrink-0 ml-4"
+                          className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg text-sm font-semibold transition w-full sm:w-auto text-center"
                         >
                           Open
                         </button>
@@ -208,7 +208,7 @@ const Groups = () => {
                     <div className="flex justify-center mt-6">
                       <button
                         onClick={() => setMyLimit(myLimit + 3)}
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-sm font-semibold transition shadow-lg"
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 sm:py-3 rounded-xl text-sm font-semibold transition shadow-lg w-full sm:w-auto"
                       >
                         Load More Groups
                       </button>
@@ -220,15 +220,14 @@ const Groups = () => {
 
             {/* SUGGESTED GROUPS */}
             <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
                 Suggested Communities
               </h2>
 
-              {/* Using cleanSuggestedGroups to safeguard layout elements */}
               {cleanSuggestedGroups.length === 0 ? (
-                <div className="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-gray-200">
+                <div className="text-center py-12 bg-white rounded-2xl border-2 border-dashed border-gray-200 p-4">
                   <FaUsers className="text-5xl text-gray-300 mx-auto mb-4" />
-                  <p className="text-gray-600">No suggested groups available</p>
+                  <p className="text-gray-600 text-sm sm:text-base">No suggested groups available</p>
                 </div>
               ) : (
                 <>
@@ -236,10 +235,10 @@ const Groups = () => {
                     {cleanSuggestedGroups.slice(0, suggestLimit).map((group) => (
                       <div
                         key={group._id}
-                        className="bg-white flex items-center justify-between p-5 rounded-2xl shadow-sm hover:shadow-lg transition border-l-4 border-green-600"
+                        className="bg-white flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-lg transition border-l-4 border-green-600 gap-4"
                       >
-                        <div className="flex items-center gap-4 flex-1">
-                          <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                        <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
                             {group.groupPics ? (
                               <img
                                 src={group.groupPics}
@@ -247,18 +246,18 @@ const Groups = () => {
                                 className="w-full h-full rounded-full object-cover"
                               />
                             ) : (
-                              <FaUsers className="text-white text-xl" />
+                              <FaUsers className="text-white text-lg sm:text-xl" />
                             )}
                           </div>
 
                           <div className="min-w-0 flex-1">
-                            <h3 className="font-bold text-gray-800 text-lg">
+                            <h3 className="font-bold text-gray-800 text-base sm:text-lg truncate">
                               {group.name}
                             </h3>
-                            <p className="text-sm text-gray-600 line-clamp-1">
+                            <p className="text-xs sm:text-sm text-gray-600 line-clamp-1">
                               {group.description || "No description"}
                             </p>
-                            <p className="text-xs text-gray-500 mt-1">
+                            <p className="text-[11px] sm:text-xs text-gray-500 mt-0.5">
                               {group.users?.length || 0} members •{" "}
                               {group.type || "Public"}
                             </p>
@@ -268,7 +267,7 @@ const Groups = () => {
                         <button
                           onClick={() => handleJoin(group._id)}
                           disabled={joiningId === group._id || joined.includes(group._id)}
-                          className="px-5 py-2 rounded-lg text-sm font-semibold transition flex-shrink-0 ml-4 bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-5 py-2 rounded-lg text-sm font-semibold transition w-full sm:w-auto text-center flex items-center justify-center bg-green-600 text-white hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {joiningId === group._id ? (
                             <FaSpinner className="animate-spin" />
@@ -287,7 +286,7 @@ const Groups = () => {
                     <div className="flex justify-center mt-6">
                       <button
                         onClick={() => setSuggestLimit(suggestLimit + 3)}
-                        className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-sm font-semibold transition shadow-lg"
+                        className="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 sm:py-3 rounded-xl text-sm font-semibold transition shadow-lg w-full sm:w-auto"
                       >
                         Load More Communities
                       </button>
