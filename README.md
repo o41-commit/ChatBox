@@ -1,16 +1,52 @@
-# React + Vite
+# ChatBox Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A chat interface project for exploring messaging UI and conversation workflows.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This repository contains the ChatBox Frontend project in the DevNado portfolio. The README is intended to help developers quickly understand the project's purpose and get oriented in the codebase.
 
-## React Compiler
+## Highlights
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Project-specific interface or service for the workflow described above.
+- Structured code intended to support ongoing improvements.
+- Development setup based on the tools and scripts configured in this repository.
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Git
+- Node.js LTS and npm, if the project uses a Node.js toolchain
+- Any external services or database required by the application
+
+### Install
+
+```bash
+git clone https://github.com/o41-commit/ChatBox.git
+cd ChatBox
+npm install
+```
+
+Run the command defined by the project scripts in `package.json`. Frontend projects commonly use `npm run dev`; backend projects may require environment variables and a database connection first.
+
+## Environment and security
+
+1. Review the project's configuration and available environment example files.
+2. Set required environment variables locally.
+3. Do not commit secrets, API keys, access tokens, or production credentials.
+4. Validate the relevant user flows before deploying changes.
+
+## Development
+
+Keep changes small and maintainable. Update this documentation when setup commands, integrations, or important behavior changes. Refer to the source files and `package.json` for the exact stack and scripts used by this repository.
+
+## Links
+
+- **Maintainer:** DevNado
+- **GitHub:** https://github.com/o41-commit
+- **Portfolio:** https://dev-nado.vercel.app/
+
+---
+
+<p align="center">Built with care by <strong>DevNado</strong> ✦</p>
